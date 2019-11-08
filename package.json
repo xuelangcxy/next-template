@@ -11,6 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "less": "^3.10.3",
+    "less-plugin-functions": "^1.0.0",
     "next": "^9.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
