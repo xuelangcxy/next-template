@@ -1,6 +1,8 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
+import '../styles/reset.less';
+import '../styles/base.less';
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
