@@ -1,14 +1,18 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript } from 'next/document';
+import React from 'react';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+    return {
+      userAgent: ctx.req.headers['user-agent'],
+      ...initialProps,
+    }
   }
 
   render() {
     return (
-      <html>
+      <html lang="zh">
         <Head>
           <style>{`body { margin: 20px } /* custom! */`}</style>
         </Head>

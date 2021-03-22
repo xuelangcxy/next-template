@@ -1,18 +1,37 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 export default class Error extends React.Component {
-  static getInitialProps({ res, err }) {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
-    return { statusCode }
+  static async getInitialProps({ req, res, err }) {
+    let statusCode = res && res.statusCode;
+    if (!statusCode) {
+      statusCode = err && err.statusCode;
+    }
+    if (statusCode > 400) {
+      console.error(
+        JSON.stringify(
+          {
+            url: req.url,
+            statusCode,
+            err: err && err.stack,
+          },
+          null,
+          '\t',
+        ),
+      );
+    }
+    const errorMessage = err && err.stack;
+    return { statusCode, errorMessage };
   }
 
   render() {
+    const { statusCode, errorMessage } = this.props;
     return (
       <p>
-        {this.props.statusCode
-          ? `An error ${this.props.statusCode} occurred on server`
-          : 'An error occurred on client'}
+        {statusCode
+          ? `An error ${statusCode} occurred on server ${errorMessage}`
+          : `An error ${errorMessage} occurred on client`}
       </p>
-    )
+    );
   }
 }
