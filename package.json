@@ -15,9 +15,12 @@
   "license": "ISC",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "yarn && lint-staged",
       "commit-msg": "npx commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "resolutions": {
+    "css-loader": "1.0.0"
   },
   "lint-staged": {
     "*.less": [
@@ -25,12 +28,13 @@
       "npx stylelint",
       "git add"
     ],
-    "*.jsx": [
+    "*.tsx": [
       "npx stylelint",
       "npx eslint --fix",
       "git add"
     ],
-    "*.js": [
+    "*.ts": [
+      "npx prettier --write",
       "npx eslint --fix",
       "git add"
     ]
