@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-css-modules"
+  ],
+  "processors": [
+    [
+      "@mapbox/stylelint-processor-arbitrary-tags",
+      {
+        "startTag": "\\s*<style[^>]*>\\s*{`",
+        "endTag": "\\s*`}\\s*<\/style>",
+        "fileFilterRegex": [
+          ".jsx"
+        ]
+      }
+    ]
+  ],
+  "rules": {
+    "no-empty-source": null,
+    "selector-class-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
+    "no-descending-specificity": null,
+    "declaration-colon-newline-after": null,
+    "indentation": null,
+    "no-duplicate-selectors": null,
+    "font-family-no-missing-generic-family-keyword": null
+  }
+}
