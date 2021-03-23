@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from '../../components/Header';
 import styles from './index.less';
+import { Modal } from 'antd-mobile';
+
+const alert = Modal.alert;
 
 const ADD = 'add';
 const MINUS = 'minus';
@@ -23,9 +26,15 @@ class Index extends React.Component {
   }
 
 	handleClick = type => {
-		this.setState(prevState => ({
-			value: type === ADD ? prevState.value + 1 : prevState.value - 1,
-		}));
+    alert('提示', `确认${type === ADD ? '增加' : '减少'}`, [
+      { text: 'Cancel', onPress: () => console.log('cancel') },
+      { text: 'Ok', onPress: () => {
+        console.log('ok');
+        this.setState(prevState => ({
+          value: type === ADD ? prevState.value + 1 : prevState.value - 1,
+        }));
+      }},
+    ])
 	};
 
 	render() {

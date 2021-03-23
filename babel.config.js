@@ -12,8 +12,9 @@ module.exports = {
       },
     ],
   ],
-  // plugins: [
+  plugins: [
     // ['import', { libraryName: 'antd', style: true }, 'antd'],
-  // ],
+    ['import', { libraryName: 'antd-mobile', style: 'css' }, 'antd-mobile'],
+  ],
   compact: false,
 };
